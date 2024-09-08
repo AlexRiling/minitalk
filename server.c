@@ -6,11 +6,10 @@
 /*   By: ariling <ariling@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 18:15:00 by ariling           #+#    #+#             */
-/*   Updated: 2024/06/29 19:04:18 by ariling          ###   ########.fr       */
+/*   Updated: 2024/09/06 12:58:30 by ariling          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "minitalk.h"
 
 void	handle_signal(int signum)
@@ -21,12 +20,12 @@ void	handle_signal(int signum)
 	if (signum == SIGUSR1)
 	{
 		current_char = (current_char << 1) | 1;
-		ft_printf("Received bit: 1\n");
+		// ft_printf("Received bit: 1\n");
 	}
 	else if (signum == SIGUSR2)
 	{
 		current_char = (current_char << 1) | 0;
-		ft_printf("Received bit: 0\n");
+		// ft_printf("Received bit: 0\n");
 	}
 	bit_index++;
 	if (bit_index == 8)

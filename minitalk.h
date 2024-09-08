@@ -6,7 +6,7 @@
 /*   By: ariling <ariling@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 18:15:28 by ariling           #+#    #+#             */
-/*   Updated: 2024/06/29 18:49:55 by ariling          ###   ########.fr       */
+/*   Updated: 2024/09/06 11:50:48 by ariling          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@
 # include <stdlib.h>
 # include <sys/types.h>
 # include <unistd.h>
+# include "libft/libft.h"
 
 #endif
