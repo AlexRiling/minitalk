@@ -6,7 +6,7 @@
 /*   By: ariling <ariling@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 18:15:15 by ariling           #+#    #+#             */
-/*   Updated: 2024/09/06 11:50:46 by ariling          ###   ########.fr       */
+/*   Updated: 2024/10/29 13:44:16 by ariling          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,19 @@ void	send_bits(char c, pid_t pid)
 		bit = (c >> i) & 1;
 		if (bit == 1)
 		{
-			kill(pid, SIGUSR1);
+			if (kill(pid, SIGUSR1) == -1)
+			{
+				perror("Failed to send SIGUSR1");
+				exit(1);
+			}
 		}
 		else
 		{
-			kill(pid, SIGUSR2);
+			if (kill(pid, SIGUSR2) == -1)
+			{
+				perror("Failed to send SIGUSR2");
+				exit(1);
+			}
 		}
 		usleep(300);
 		i--;
@@ -49,15 +57,21 @@ void	message_sender(const char *message, int pid)
 int	main(int argc, char *argv[])
 {
 	int			pid;
-	const char	*message = argv[2];
+	const char	*message;
 
 	if (argc != 3)
 	{
-		ft_printf("Wrong input!!\n");
+		ft_printf("Wrong input! Usage: ./client <PID> <message>\n");
 		return (1);
 	}
 	pid = ft_atoi(argv[1]);
-	ft_printf("Received server pid: %d\n", pid);
+	if (pid <= 0)
+	{
+		ft_printf("Invalid PID provided.\n");
+		return (1);
+	}
+	message = argv[2];
+	ft_printf("Received server PID: %d\n", pid);
 	message_sender(message, pid);
 	return (0);
 }
