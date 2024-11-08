@@ -6,7 +6,7 @@
 /*   By: ariling <ariling@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 18:15:15 by ariling           #+#    #+#             */
-/*   Updated: 2024/11/05 22:50:23 by ariling          ###   ########.fr       */
+/*   Updated: 2024/11/08 12:11:20 by ariling          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	send_bits(char c, pid_t pid)
 			send_signal(pid, SIGUSR1, "Failed to send SIGUSR1");
 		else
 			send_signal(pid, SIGUSR2, "Failed to send SIGUSR2");
-		usleep(2000);
+		usleep(300);
 		i--;
 	}
 }
